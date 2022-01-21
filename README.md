@@ -28,9 +28,9 @@ Here are the details:
 
 Using Expo and React Navigation, build a basic app skeleton with two tabs on the bottom and a drawer that can be accessed on the left. (Each tabbed page can display text saying "tab 1", "tab2".)
 
-There will be a button in the drawer saying "show me a joke," which will request a random joke from the endpoint here and immediately trigger a push notification to show on the device that displays the joke's setup. 
+There will be a button in the drawer saying "show me a joke," which will request a random joke from the endpoint [here](https://v2.jokeapi.dev/joke/Any) and immediately trigger a push notification to show on the device that displays the joke's setup. 
 
-Upon clicking the notification, the drawer will close, and a new stacked page will open on top of the root tab view that displays the joke's delivery/punchline. (Full JokeAPI documentation can be found here.)
+Upon clicking the notification, the drawer will close, and a new stacked page will open on top of the root tab view that displays the joke's delivery/punchline. (Full JokeAPI documentation can be found [here](https://sv443.net/jokeapi/v2/).)
 
 Feel free to take this further in any way you see fit (e.g. filters, etc.).
 
