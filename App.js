@@ -18,6 +18,8 @@ import reducers from "./redux";
 import { createStore } from 'redux';
 import { Provider as StoreProvider } from 'react-redux';
 
+import {Feather as FeatherIcon, MaterialIcons} from 'react-native-vector-icons';
+
 // https://reactnavigation.org/docs/drawer-based-navigation
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -27,13 +29,13 @@ export default function App() {
   return (
     <StoreProvider store={createStore(reducers)}>
       <NavigationContainer>
-        <DrawerNavigatorBar />
+        {/* <DrawerNavigatorBar /> */}
+        <BottomTabNavigatorBar/>
       </NavigationContainer>
-      <View>
+      {/* <View>
         <Text>kenhyj React Native</Text>
-        {/* <NavigatorBar></NavigatorBar> */}
         <StatusBar style="auto" />
-      </View>
+      </View> */}
     </StoreProvider>
   );
 }
@@ -58,9 +60,10 @@ const StackNavigatorBar = () => {
 
 const DrawerNavigatorBar = () => {
   return (
-    <Drawer.Navigator initialRouteName='Tab1'>
+    <Drawer.Navigator>
+      {/* <Drawer.Navigator initialRouteName='JokeTab1'>
       <Drawer.Screen name="Tab1" component={Tab1} />
-      <Drawer.Screen name="Tab2" component={Tab2} />
+      <Drawer.Screen name="Tab2" component={Tab2} /> */}
     </Drawer.Navigator>
   )
 }
@@ -68,8 +71,8 @@ const DrawerNavigatorBar = () => {
 const BottomTabNavigatorBar = () => {
   return (
     <Tab.Navigator initialRouteName='Tab1'>
-      <Tab.Screen name="Tab1" component={Tab1} />
-      <Tab.Screen name="Tab2" component={Tab2} />
+      <Tab.Screen name="Tab1" component={Tab1} options={{tabBarIcon: ()=> {<MaterialIcons name="home" />} }}/>
+      <Tab.Screen name="Tab2" component={Tab2} options={{tabBarIcon: ()=> {<MaterialIcons name="home" />} }}/>
     </Tab.Navigator>
   )
 }
