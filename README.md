@@ -1,5 +1,8 @@
 # NookCalendar1
 
+## Expo link
+https://expo.dev/@kenhyj/ncal
+
 Thank you for your interest in completing our coding test. 
 
 We've found it's a very effective way to determine our applicants' skills baseline.

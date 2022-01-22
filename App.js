@@ -48,9 +48,8 @@ export default function App() {
       <NavigationContainer>
         <Drawer.Navigator>
           <Drawer.Screen
-            name="Root"
+            name="Main"
             component={BottomTabNavigatorBar}
-            // options={{headerShown: false}}
             >
           </Drawer.Screen>
           <Drawer.Screen name="show me a joke"
@@ -95,7 +94,7 @@ const DrawerNavigatorBar = () => {
 
 const BottomTabNavigatorBar = () => {
   return (
-    <Tab.Navigator initialRouteName='Tab1'>
+    <Tab.Navigator initialRouteName='Tab1' options={{}}>
       <Tab.Screen name="Tab1" component={Tab1} options={{tabBarIcon: ()=> {<MaterialIcons name="home" />} }}/>
       <Tab.Screen name="Tab2" component={Tab2} options={{tabBarIcon: ()=> {<MaterialIcons name="home" />} }}/>
     </Tab.Navigator>
