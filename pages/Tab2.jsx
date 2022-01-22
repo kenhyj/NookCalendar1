@@ -9,7 +9,7 @@ export default function Tab2({navigation}) {
 
   return (
     <View style={styles.container}>
-      {/* <Text>Login Page</Text>  */}
+      <Text>These are just place holders. They don't do anything</Text>
       <View>
         <FeatherIcon name="user" size={30}/>
         <TextInput editable placeholder='Username' value={username} onChange={setUsername}/>

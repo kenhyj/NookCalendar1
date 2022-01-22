@@ -11,8 +11,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import Tab1 from "./pages/Tab1";
-import Tab2 from './pages/Tab2';
+import {Tab1, Tab2, TabJoke} from "./pages";
+
 
 import reducers from "./redux";
 import { createStore } from 'redux';
@@ -26,16 +26,39 @@ const Drawer = createDrawerNavigator();
 const Tab = createBottomTabNavigator();
 
 export default function App() {
+
+  const [jokes, setJokes] = useState("");
+
+  const getJokes = () => {
+    axios.get("https://v2.jokeapi.dev/joke/Any")
+    .then( (response) => {
+      // console.log(typeof (response.data) ) ;
+      // console.log(response.data);
+      if (response.data["type"] === "single") {
+        setJokes(response.data["joke"])
+      } else if (response.data["type"] === "twopart") {
+        setJokes(response.data["setup"] + "\n" + response.data["delivery"])
+      }
+    })
+    // .catch()
+  }
+
   return (
     <StoreProvider store={createStore(reducers)}>
       <NavigationContainer>
-        {/* <DrawerNavigatorBar /> */}
-        <BottomTabNavigatorBar/>
+        <Drawer.Navigator>
+          <Drawer.Screen
+            name="Root"
+            component={BottomTabNavigatorBar}
+            // options={{headerShown: false}}
+            >
+          </Drawer.Screen>
+          <Drawer.Screen name="show me a joke"
+          component={TabJoke}>
+          </Drawer.Screen>
+        </Drawer.Navigator>
+        {/* <BottomTabNavigatorBar/> */}
       </NavigationContainer>
-      {/* <View>
-        <Text>kenhyj React Native</Text>
-        <StatusBar style="auto" />
-      </View> */}
     </StoreProvider>
   );
 }
@@ -61,6 +84,8 @@ const StackNavigatorBar = () => {
 const DrawerNavigatorBar = () => {
   return (
     <Drawer.Navigator>
+      {/* show me a joke */}
+
       {/* <Drawer.Navigator initialRouteName='JokeTab1'>
       <Drawer.Screen name="Tab1" component={Tab1} />
       <Drawer.Screen name="Tab2" component={Tab2} /> */}
